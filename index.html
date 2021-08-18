@@ -1,0 +1,644 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pipeline GitHub-Terraform-AWS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a5828bec-0e24-4f3d-9b07-7eab07f3257e" class="page sans"><header><h1 class="page-title">Pipeline GitHub-Terraform-AWS</h1></header><div class="page-body"><nav id="3f493e95-1b81-43b4-9c3a-6ce39f51753f" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d50b5a6b-5ea7-4c84-af1b-2af295f0ba64"><mark class="highlight-red">Creating a GitHub repository</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#22bebf5a-7842-4e9a-8b1e-313815733200"><mark class="highlight-red">Create a Workspace</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d82f8284-1810-469d-bc53-acb8e352e1bf"><mark class="highlight-red">Creating a new Workflow</mark></a></div></nav><h1 id="d50b5a6b-5ea7-4c84-af1b-2af295f0ba64" class=""><mark class="highlight-red">Creating a GitHub repository</mark></h1><figure id="c6671a18-671f-4360-a8c3-bd80e56d44a8" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_1.png"><img style="width:949px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_1.png"/></a></figure><p id="17477f1b-0529-4853-9246-eba70c97f7ed" class="">The repository must contain the terraform configuration file</p><p id="2e458947-ec87-4030-acd3-3eab5fcde0b2" class="">
+</p><figure id="e5f386f1-ec9b-42c7-b516-409f2e5bfb11"><a href="https://github.com/zm-intern04/api-driven-workspace-pipeline/blob/main/main.tf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">api-driven-workspace-pipeline/main.tf at main · zm-intern04/api-driven-workspace-pipeline</div><div class="bookmark-description">Contribute to zm-intern04/api-driven-workspace-pipeline development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/zm-intern04/api-driven-workspace-pipeline/blob/main/main.tf</div></div><img src="https://opengraph.githubassets.com/522ce7ecc65c699870b3892650900f2408857f170cbd1359970be6ba874dca36/zm-intern04/api-driven-workspace-pipeline" class="bookmark-image"/></a></figure><p id="90400b14-e45c-4e05-86a7-e677f2282d27" class="">👆👆 Link to the infrastructure provisinoed in this demo</p><p id="d6399e9f-fd3a-4346-a0be-5d2254141724" class="">
+</p><figure id="2d92816f-2b86-4e61-ba25-f7df30cad047" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_2.png"><img style="width:569px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_2.png"/></a></figure><p id="3e5cba8b-9b66-4f08-bd33-8ea8daee1ee7" class="">Note that these 2 blocks</p><p id="2e2d7bc6-c443-4620-8a63-3c9dd8068acf" class=""><mark class="highlight-teal"><strong>BLOCK 1</strong></mark>: Calls for variables containing bothe access and secret keys for the AWS account.</p><p id="525fc0c2-0e8b-45b8-8204-c91ebc54af18" class="">These variables will be declared later in the workspace (Terraform Cloud)</p><p id="a8974514-b728-410f-8882-843d44b74963" class=""><mark class="highlight-teal"><strong>BLOCK 2</strong></mark>: This block references the remote backend, hosted on Terraform Cloud</p><p id="081d23a2-1d47-4d00-84ba-35655bf1a4d7" class="">
+</p><h1 id="22bebf5a-7842-4e9a-8b1e-313815733200" class=""><mark class="highlight-red">Create a Workspace</mark></h1><p id="15dd5a88-5156-4676-8b1b-4614087928ed" class="">
+</p><figure id="3ca5478b-9d55-418d-8e41-ef53fe0263e5" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_3.png"><img style="width:1083px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_3.png"/></a></figure><p id="1863fbbe-eab7-447b-aa6b-983a9b1f2420" class="">Make sure to chose &quot;API-driven workflow&quot; and not VCS</p><p id="ec71b00c-93ed-4a33-8976-71ba326eef74" class="">Now that the workspace is done, you will need to copy the backend block and paste it into the terraform configuration file (BLOCK 2).</p><p id="238e7bdb-413e-4bf2-9eb2-21993a5b9450" class="">Variables (BLOCK 1) must also be declared</p><figure id="a918aee1-0a7d-4160-b651-eea8ff87e6aa" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_4.png"><img style="width:1474px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_4.png"/></a></figure><p id="ce96f21b-b1fb-47ea-9c31-118e292d2704" class="">
+</p><p id="074753ab-0fd7-4723-a9af-557ad320c2bc" class="">In order to connect terraform and Github, a token must be generated</p><p id="0b3918f2-4f76-4942-beed-6caee391eaec" class="">USER→settings→tokens→Create an API token (can only be viewd once)</p><figure id="f70cc49a-e15e-4c22-a417-3e3611e45633" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_5.png"><img style="width:1289px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_5.png"/></a></figure><p id="c44c845a-cc7c-4549-a2af-1acd67b2aa70" class="">After generating the token, it has to be stored in github vault (github secrets)</p><p id="ef526624-64d2-4c66-bbcb-00add7f5c8ac" class="">REPOSITORY→settings→secrets→New repository secret</p><figure id="db309af0-e03a-4978-b4bc-48cae668a1b6" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_6.png"><img style="width:1403px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_6.png"/></a></figure><p id="383c03da-469b-4b4e-b5fd-894f866ee0e9" class="">
+</p><h1 id="d82f8284-1810-469d-bc53-acb8e352e1bf" class=""><mark class="highlight-red">Creating a new Workflow</mark></h1><p id="2ab49420-ab77-40e2-8c43-5fc00e1a85b5" class="">Terraform has acces to AWS (ACCESS_KEY &amp; SECRET_KEY)</p><p id="90285203-224a-464e-94b0-f12a8a405fcc" class="">Terraform &amp; GitHub are both connected (API Token)</p><p id="2649cb3d-6e25-469c-88d6-77dd8880c552" class="">Now the only thing missing is a workflow to trigger terraform actions automatically</p><p id="e1eae95c-af10-462b-922d-837df67c5a24" class="">
+</p><p id="38b7c7c4-6d48-4f50-81d7-1032b08bb337" class="">To create new workflow, go to Actions tab→ chose the already existing template for Terraform</p><figure id="ec48800f-8117-49a3-8635-4c7040bc893d" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_8.png"><img style="width:995px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_8.png"/></a></figure><figure id="a630cf92-696b-44f0-bbce-eb24414f8c96" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_7.png"><img style="width:446px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_7.png"/></a></figure><p id="1f55bb86-d627-4653-b281-8125fe1894fd" class="">A new .yml file will be created under <mark class="highlight-yellow">.github/workflows/file.yml</mark></p><p id="7d941f3e-2ebf-40f9-8c13-1b4a2a2db458" class="">The workflow will trigger when a push is made to main branch</p><p id="a1dc82da-bc82-48d1-bf4c-1020bd7d8066" class="">default template is ready to go</p><p id="0b7c9c17-35de-45d5-84a6-dbf41905a229" class="">PS: make sure that the API_TOKEN reference matches the name you typed in GitHub secrets</p><figure id="3fab0313-a74e-4d42-ac84-4ea8894b1923" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_10.png"><img style="width:1194px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_10.png"/></a></figure><p id="9d19f557-b157-47cf-af02-534ecf47310a" class="">
+</p><p id="a37d5173-120e-4b4e-88f7-5a0636d2cefe" class="">Trigger Workflow</p><p id="98bd3b8b-8700-4804-bb69-eba8e568ee0f" class="">When u push new changes to the main branch, a new workflow by the name of your commit will start</p><p id="04b14a26-e599-408a-9468-fa10641e341a" class="">based on the steps specified in the .yml file, terraform init, plan and apply are going to be executed</p><figure id="09358b04-a5b7-46b7-9227-1209623b5f61" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_11.png"><img style="width:1291px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_11.png"/></a></figure><figure id="7e569cea-12ca-4fd5-a2d3-72ab26ae7451" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_12.png"><img style="width:672px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_12.png"/></a></figure><p id="65d961c5-ffe7-49b4-9fcb-ceda0e0fa363" class="">The infrastructured whould now be provisioned</p><p id="c578200f-a71b-4c1e-aa51-c5b259667203" class="">in my case, vpc, subnet, security group, ...ec2 with apache and simple game cloned from github</p><figure id="94f5581e-c50f-40af-96c7-3a75153a4413" class="image"><a href="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_14.png"><img style="width:974px" src="Pipeline%20GitHub-Terraform-AWS%20c6671a18671f4360a8c3bd80e56d44a8/Screenshot_14.png"/></a></figure></div></article></body></html>
